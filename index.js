@@ -18,13 +18,13 @@
 
 	var secureServer = https.createServer(options, app);
 
-	secureServer.listen(8080, function() {
-		console.log('Secure Server listening on port ' + 8080);
+	secureServer.listen(443, function() {
+		console.log('Secure Server listening on port ' + 443);
 	});
 
 	var insecureServer = http.createServer(app);
-	insecureServer.listen(8000, function() {
-		console.log('Insecure Server listening on port ' + 8000);
+	insecureServer.listen(80, function() {
+		console.log('Insecure Server listening on port ' + 80);
 	});
 
 
