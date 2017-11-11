@@ -10,34 +10,33 @@
 	//app.use(express.static(config.dist.root));
 
 	//HTTP
-	var options = {
+	/*var options = {
 		key: fs.readFileSync('./cert/key.pem'),
 		cert: fs.readFileSync('./cert/cert.pem')
 	};
+*/
 
+	app.set('port', (process.env.PORT || 5000));
 
-	var secureServer = https.createServer(options, app);
-
-	secureServer.listen(443, function() {
-		console.log('Secure Server listening on port ' + 443);
-	});
-
-	var insecureServer = http.createServer(app);
-	insecureServer.listen(80, function() {
-		console.log('Insecure Server listening on port ' + 80);
-	});
-
-
+app.use(express.static(__dirname + '/views'));
+	
 
 	app.get('/*', function (req, res) {
 		if (req.secure) {
+			console.log('Secure Server listening on port ' + 443);
 			res.sendFile( __dirname + "/views/" + "secure.html" );
 		}
 		else {
+			console.log('IN Secure Server listening on port ' + 443);
 			res.sendFile( __dirname + "/views/" + "unsecure.html" );
 		}
 
 		})
+
+
+		app.listen(app.get('port'), function() {
+		  console.log('Node app is running on port', app.get('port'));
+		});
 
 	/*var server = app.listen(8080, function () {
 	   var host = server.address().address
