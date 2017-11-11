@@ -18,13 +18,13 @@
 
 	var secureServer = https.createServer(options, app);
 
-	secureServer.listen(443, function() {
-		console.log('Secure Server listening on port ' + 443);
+	secureServer.listen(8080, function() {
+		console.log('Secure Server listening on port ' + 8080);
 	});
 
 	var insecureServer = http.createServer(app);
-	insecureServer.listen(80, function() {
-		console.log('Insecure Server listening on port ' + 80);
+	insecureServer.listen(8000, function() {
+		console.log('Insecure Server listening on port ' + 8000);
 	});
 
 
@@ -32,16 +32,16 @@
 	app.get('/*', function (req, res) {
 		if (req.secure) {
 			res.sendFile( __dirname + "/views/" + "secure.html" );
-		} 
+		}
 		else {
 			res.sendFile( __dirname + "/views/" + "unsecure.html" );
 		}
-		  
+
 		})
 
 	/*var server = app.listen(8080, function () {
 	   var host = server.address().address
 	   var port = server.address().port
-	   
+
 	   console.log("Example app listening at http://%s:%s", host, port)
 	})*/

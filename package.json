@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node Server.js"
+    "start": "node index.js"
   },
   "dependencies" : {
     "express" : "latest",
@@ -12,5 +12,5 @@
 
   },
   "author": "Me",
-  "license": "ISC"
+  "license": "MIT"
 }
